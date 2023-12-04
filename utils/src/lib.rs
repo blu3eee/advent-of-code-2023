@@ -2,7 +2,7 @@ use std::fs::{ self, File };
 
 // Read input from a file
 pub fn read_input(day_number: usize) -> Vec<String> {
-    let path = format!("day{day_number}/src/input.txt");
+    let path = format!("day{day_number:02}/src/input.txt");
     fs::read_to_string(&path)
         .expect(&format!("{path:?} not available"))
         .lines()
@@ -11,6 +11,6 @@ pub fn read_input(day_number: usize) -> Vec<String> {
 }
 
 pub fn create_output_file(day_number: usize) -> File {
-    let path = format!("day{day_number}/src/output.txt");
+    let path = format!("day{day_number:02}/src/output.txt");
     fs::File::create(path).expect("cant create output file")
 }

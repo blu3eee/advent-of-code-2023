@@ -1,14 +1,6 @@
-use std::{ env, fs, collections::HashMap, io::Write, u64 };
+use std::{ env, collections::HashMap, io::Write, u64 };
 use itertools::Itertools;
-
-// Read input from a file
-fn read_input(path: &str) -> Vec<String> {
-    fs::read_to_string(path)
-        .expect(&format!("{path:?} not available"))
-        .lines()
-        .map(|line| line.to_string())
-        .collect()
-}
+use utils::{ read_input, create_output_file };
 
 // 0-9
 // .
@@ -49,7 +41,7 @@ fn get_number(row: String, idx: usize) -> u64 {
 fn day3_part1(input: Vec<String>) -> u64 {
     let mut sum: u64 = 0;
 
-    let mut file = fs::File::create("day3/src/output.txt").expect("cant create output file");
+    let mut file = create_output_file(3);
 
     // let m = input.len();
     // let n = input[0].len();
@@ -126,7 +118,7 @@ fn day3_part1(input: Vec<String>) -> u64 {
 fn day3_part2(input: Vec<String>) -> u64 {
     let mut sum: u64 = 0;
 
-    let mut file = fs::File::create("day3/src/output.txt").expect("cant create output file");
+    let mut file = create_output_file(3);
     for i in 0..input.len() {
         let row = input[i].as_bytes();
         for j in 0..row.len() {
@@ -208,7 +200,5 @@ fn day3_part2(input: Vec<String>) -> u64 {
 fn main() {
     println!("{}", env::current_dir().unwrap().display());
 
-    let file_path = "day3/src/input.txt";
-
-    println!("{}", day3_part2(read_input(file_path)));
+    println!("{}", day3_part2(read_input(3)));
 }

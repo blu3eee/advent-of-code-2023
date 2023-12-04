@@ -1,13 +1,6 @@
-use std::{ fs, collections::HashMap, io::Write };
+use std::{ collections::HashMap, io::Write };
 
-// Read input from a file
-fn read_input(path: &str) -> Vec<String> {
-    fs::read_to_string(path)
-        .expect(&format!("{path:?} not available"))
-        .lines()
-        .map(|line| line.to_string())
-        .collect()
-}
+use utils::{ create_output_file, read_input };
 
 #[allow(dead_code)]
 fn part1(input: Vec<String>) -> u32 {
@@ -47,7 +40,7 @@ fn part1(input: Vec<String>) -> u32 {
     nums.iter().sum::<u32>()
 }
 fn part2(input: Vec<String>) -> u32 {
-    let mut file = fs::File::create("day1/src/output.txt").expect("cant create output file");
+    let mut file = create_output_file(1);
     let numbers: HashMap<&str, u32> = HashMap::from_iter(
         vec![
             ("one", 1),
@@ -123,9 +116,7 @@ fn part2(input: Vec<String>) -> u32 {
     nums.iter().sum::<u32>()
 }
 fn main() {
-    let path = "day1/src/input.txt";
-
-    let input = read_input(path);
+    let input = read_input(1);
 
     println!("{}", part2(input));
 }
