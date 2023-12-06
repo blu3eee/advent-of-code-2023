@@ -31,7 +31,7 @@ fn part1(input: Vec<String>, mut output_file: &File) {
         .map(|x| x.parse::<u64>().unwrap())
         .collect::<Vec<u64>>();
 
-    let src_to_dest_list = content
+    let layers_src_to_dest = content
         .iter()
         .skip(1)
         .map(|cat| get_src_to_dest_range_list(cat))
@@ -40,7 +40,7 @@ fn part1(input: Vec<String>, mut output_file: &File) {
     for seed in seeds {
         let _ = output_file.write_all(&format!("seed {seed}\n").as_bytes());
         let mut cur_cat_number = seed;
-        for src_to_dest in &src_to_dest_list {
+        for src_to_dest in &layers_src_to_dest {
             for (src, dest, range) in src_to_dest {
                 if (*src..*src + *range).contains(&cur_cat_number) {
                     cur_cat_number = cur_cat_number - src + dest;
@@ -74,14 +74,16 @@ fn part2(input: Vec<String>, mut output_file: &File) {
         seed_ranges.push((seeds[i * 2], seeds[i * 2 + 1]));
     }
 
-    let src_to_dest_list = content
+    let layers_src_to_dest = content
         .iter()
         .skip(1)
         .map(|cat| get_src_to_dest_range_list(cat))
         .collect::<Vec<Vec<(u64, u64, u64)>>>();
 
     let mut closest_location = u64::MAX;
-    let mut memoizeds: Vec<HashMap<(u64, u64), u64>> = vec![HashMap::new(); src_to_dest_list.len()];
+    let mut memoizeds: Vec<
+        HashMap<(u64, u64), u64>
+    > = vec![HashMap::new(); layers_src_to_dest.len()];
     for (init_seed, range) in seed_ranges {
         println!("seed range {init_seed} , {range}");
         let _ = output_file.write_all(&format!("seed range {init_seed} , {range}\n").as_bytes());
@@ -92,7 +94,7 @@ fn part2(input: Vec<String>, mut output_file: &File) {
 
             let mut path: Vec<u64> = Vec::new();
             let mut step: u64 = u64::MAX;
-            for (i, layer_vec) in src_to_dest_list.clone().iter().enumerate() {
+            for (i, layer_vec) in layers_src_to_dest.clone().iter().enumerate() {
                 // println!("layer {i}");
                 let mut found = false;
                 for ((start, end), value) in memoizeds[i].iter() {
