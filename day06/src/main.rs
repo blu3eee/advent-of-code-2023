@@ -71,10 +71,6 @@ fn part2(input: Vec<String>, mut output_file: &File) {
             break;
         }
     }
-    // let mut ways = 1;
-    // for x in values.clone() {
-    //     ways *= x;
-    // }
 }
 
 fn main() {
