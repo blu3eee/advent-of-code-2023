@@ -82,7 +82,7 @@ fn main() {
 
     let output_file = create_output_file(6);
 
+    part1(input.clone(), &output_file);
     part2(input.clone(), &output_file);
-    // part2(input.clone(), &output_file);
     // 10834440
 }

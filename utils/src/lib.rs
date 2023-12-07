@@ -1,3 +1,5 @@
+pub mod sort;
+
 use std::fs::{ self, File };
 
 // Read input from a file
