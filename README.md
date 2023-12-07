@@ -6,6 +6,13 @@ This repository contains my personal solutions for the [Advent of Code 2023](htt
 
 Each day's challenge is placed in a separate directory, named `day01`, `day02`, etc. Every directory contains at least two files in the `src` folder: `main.rs` and `input.txt` which is the input provided by Advent of Code.
 
+## Most interesting problems so far
+
+- Day 2 part 2
+- Day 3
+- Day 5 part 2
+- Day 7
+
 ## Acknowledgements
 
 - Thanks to Eric Wastl, the creator of Advent of Code.
