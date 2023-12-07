@@ -33,11 +33,11 @@ impl Ord for Hand {
 
 - With the problem description for part 1 at [Advent of Code - Day 07](https://adventofcode.com/2023/day/7), you can see that we have different kind of hands and each hand will have its strength base on the hand cards, so I have a function `get_hand_score` to get the **score** of the hand. There are `7 different kinds of hands` for this problem, so I have the algorithm returning the score of 1 to 7. The implementation of `get_hand_score` for part 1 is pretty straightforward, you iterate through each characters and count it, save it in a `HashMap` mapping the character to its count.
 - After that, we based on how many different cards we have on our hand (the length of the `HashMap` keys) to determine the score.
-  - `5` different cards is [High card] hand
-  - `4` different cards is [One pair] hand
-  - `3` different cards, the hand is either [Two pair] or [Three of a kind] depends on if there is a card with the count of `3`.
-  - `2` different cards, the hand is either [Full house] or [Four of a kind] depends on if there is a card with the count of `4`.
-  - `1` type of card: [Five of a kind] hand
+  - `5` different cards is **[High card]** hand
+  - `4` different cards is **[One pair]** hand
+  - `3` different cards, the hand is either **[Two pair]** or **[Three of a kind]** depends on if there is a card with the count of `3`.
+  - `2` different cards, the hand is either **[Full house]** or **[Four of a kind]** depends on if there is a card with the count of `4`.
+  - `1` type of card: **[Five of a kind]** hand
 
 ### PART 2
 
