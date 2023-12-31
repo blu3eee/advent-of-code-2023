@@ -1,5 +1,5 @@
 [package]
-name = "utils"
+name = "day19"
 version = "0.1.0"
 edition = "2021"
 authors.workspace = true
@@ -7,4 +7,4 @@ authors.workspace = true
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-image = "0.24.7"
+utils = { workspace = true }

@@ -1,5 +1,5 @@
 pub mod sort;
-
+pub mod create_image;
 use std::fs::{ self, File };
 
 // Read input from a file
